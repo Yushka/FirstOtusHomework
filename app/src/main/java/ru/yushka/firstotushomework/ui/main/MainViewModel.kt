@@ -13,28 +13,28 @@ import retrofit2.http.GET
 
 class MainViewModel : ViewModel() {
     val screenState = MutableLiveData<ScreenState>()
-//    private val retrofit: Retrofit = Retrofit.Builder()
-//        .baseUrl("https://thereportoftheweek-api.herokuapp.com/")
-//        .addConverterFactory(GsonConverterFactory.create())
-//        .build()
-//    private val api: API = retrofit.create()
-//
-//    init {
-//        viewModelScope.launch {
-//            screenState.value = ScreenState.Progress
-//            try {
-//                screenState.value = ScreenState.Content(api.getReports())
-//            } catch (ex: Exception) {
-//                Log.e("MainViewModel", "", ex)
-//                screenState.value = ScreenState.Error
-//            }
-//        }
-//    }
-//
-//    interface API {
-//        @GET("reports")
-//        suspend fun getReports(): List<VideoItem>
-//    }
+    private val retrofit: Retrofit = Retrofit.Builder()
+        .baseUrl("https://thereportoftheweek-api.herokuapp.com/")
+        .addConverterFactory(GsonConverterFactory.create())
+        .build()
+    private val api: API = retrofit.create()
+
+    init {
+        viewModelScope.launch {
+            screenState.value = ScreenState.Progress
+            try {
+                screenState.value = ScreenState.Content(api.getReports())
+            } catch (ex: Exception) {
+                Log.e("MainViewModel", "", ex)
+                screenState.value = ScreenState.Error
+            }
+        }
+    }
+
+    interface API {
+        @GET("reports")
+        suspend fun getReports(): List<VideoItem>
+    }
 
     sealed class ScreenState {
         object Progress : ScreenState()
