@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">FirstOtusHomework</string>
+    <string name="video_product_name_title">Product:</string>
+    <string name="video_category_title">Category:</string>
+    <string name="video_manufacturer_name_title">Manufacturer:</string>
+    <string name="something_wrong">Something wrong =(</string>
+</resources>
